@@ -1,7 +1,7 @@
 ````
-git clone https://github.com/jisaac89/recoil-firebase-boilerplate.git
+git clone https://github.com/jisaac89/gsk-boilerplate.git
 
-cd recoil-firebase-boilerplate
+cd gsk-boilerplate
 
 git clone https://github.com/jisaac89/recoil.git
 
