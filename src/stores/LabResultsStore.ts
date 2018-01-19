@@ -3,6 +3,7 @@ import {observable, computed, ObservableMap, toJS} from 'mobx';
 import {ILabResultsStore} from '../interfaces/ILabResultsStore';
 import BaseStore from './BaseStore';
 import { IPatient } from '../interfaces/data/IPatient';
+import { IViralLoad} from '../interfaces/data/IViralLoad';
 
 export class LabResultsStore extends BaseStore {
 
@@ -27,12 +28,12 @@ export class LabResultsStore extends BaseStore {
 
     let randomId = Math.random().toString();
 
-    return {
+    return<IViralLoad> {
       labTestUUID : '`' + randomId + '`',
-      version : '1',
+      version : 2,
       description : context.selectedDescription,
-      creatorReference : '1',
-      owner : context.selectedPatient['$class'],
+      creatorReference : 1,
+      owner : context.selectedPatient['firstName'],
       labTest : {
        description: '',
        result : '' 
@@ -41,7 +42,7 @@ export class LabResultsStore extends BaseStore {
   }
 
   selectPatient(patient: IPatient) {
-    this.selectedPatient = patient['$class'];
+    this.selectedPatient = patient['firstName'];
   }
 
   selectDescription(value) {

@@ -63,7 +63,7 @@ export default class Message extends React.Component<any, any> {
                                         <h2 className="mb20">Enter your patient results</h2>
 
                                         <Toolbar block vertical spacing className="mt10">
-                                            <Dropdown  searchTitle={"Search by patient name."} searchableKeys={['$class']} block columns={[{name:'$class', title: 'Patient name'}]} title={labResultsStore.selectedPatient ? labResultsStore.selectedPatient : "Select Patient"} rowIsSelectable="single" onChange={this.selectPatient.bind(this)} mobile dataSource={patientsStore.list} />
+                                            <Dropdown  searchTitle={"Search by patient name."} searchableKeys={['firstName']} block columns={[{name:'firstName', title: 'Patient name'}]} title={labResultsStore.selectedPatient ? labResultsStore.selectedPatient : "Select Patient"} rowIsSelectable="single" onChange={this.selectPatient.bind(this)} mobile dataSource={patientsStore.list} />
                                             <Input block placeholder="Prescription Information" />
                                             <Input block placeholder="Item Master Information" />
                                             <Input block placeholder="Testing ID" />

@@ -26,15 +26,17 @@ export default class Message extends React.Component<any, any> {
     render() {
         return (
             <SlideIn fill className="z3" if={!appStore.menu} from="top">
-                <Layer fill flex>
+                <Layer fill flexCenter>
                     <Emerge enter="fadeIn" exit={'fadeOut'} if={labResultsStore.slideIndex === 0 && !appStore.menu}>
-                        <Layer>
+                        <Layer className="w500px center-width">
                             <i className="material-icons super-xl mb20">visibility</i>
                             <h2 className="mb20">Lab results</h2>
                             <h1 className="mb20">
                                 Below is a list of recently sent results.
                             </h1>
-                            <Table dataSource={labResultsStore.list} />
+                            <Layer className="text-left">
+                                <Table overflow dataSource={labResultsStore.list} />
+                            </Layer> 
                         </Layer>
                     </Emerge>
                 </Layer>

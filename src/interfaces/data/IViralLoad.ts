@@ -1,6 +1,6 @@
 import {ILabTest} from './ILabTest';
 
-export interface IPrescription{
+export interface IViralLoad{
     labTestUUID ?: string;
     version ?: number;
     description ?: string;

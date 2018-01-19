@@ -4,9 +4,10 @@ import {Recoil, Table, Button, Toolbar, Input, Emerge, Layer, SlideIn, Loading, 
 
 import {observer} from 'mobx-react';
 
-import {appStore} from '../../stores/_GlobalStore';
+import {appStore, labResultsStore} from '../../stores/_GlobalStore';
 
 import RouterButton from '../helpers/RouterButton';
+
 
 @observer
 export default class MenuPane extends React.Component<any, any> {
@@ -18,7 +19,7 @@ export default class MenuPane extends React.Component<any, any> {
             <SlideIn className="z4" if={appStore.menu} from="bottom" fill>
                 <Layer flexCenter fill flex theme="p10">
                     <RouterButton simple className="h100 w100" materialIcon size="xlarge" theme="primary" history={history} icon="opacity" route="/enter-lab-results" title="Enter lab results" />
-                    <RouterButton simple className="h100 w100" materialIcon size="xlarge" theme="primary" history={history} icon="visibility" route="/enter-lab-results" title="View results" />
+                    {labResultsStore.list.length > 0 ? <RouterButton simple className="h100 w100" materialIcon size="xlarge" theme="primary" history={history} icon="visibility" route="/view-lab-results" title="View results" /> : null}
                 </Layer>
             </SlideIn>
         )
