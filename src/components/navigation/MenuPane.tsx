@@ -16,13 +16,9 @@ export default class MenuPane extends React.Component<any, any> {
 
         return (
             <SlideIn className="z4" if={appStore.menu} from="bottom" fill>
-                <Layer flexCenter fill theme="dark">
-                    <Emerge if={appStore.menu}>
-                        <div></div>
-                        <div>
-                            <RouterButton materialIcon size="xlarge" theme="primary" simple history={history} icon="opacity" route="/enter-lab-results" title="enter lab results" />
-                        </div>                 
-                    </Emerge>
+                <Layer flexCenter fill flex theme="p10">
+                    <RouterButton simple className="h100 w100" materialIcon size="xlarge" theme="primary" history={history} icon="opacity" route="/enter-lab-results" title="Enter lab results" />
+                    <RouterButton simple className="h100 w100" materialIcon size="xlarge" theme="primary" history={history} icon="visibility" route="/enter-lab-results" title="View results" />
                 </Layer>
             </SlideIn>
         )

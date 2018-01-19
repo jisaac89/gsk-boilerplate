@@ -14,6 +14,7 @@ import MenuPane from './navigation/MenuPane';
 
 import Dashboard from './routes/Dashboard';
 import LabResults from './routes/LabResults';
+import ViewLabResults from './routes/ViewLabResults';
 
 @observer
 export default class App extends React.Component<any, any> {
@@ -41,6 +42,7 @@ export default class App extends React.Component<any, any> {
                         <Header />
                         <Route exact path="/" component={Dashboard} />
                         <Route path="/enter-lab-results" component={LabResults} />
+                        <Route path="/view-lab-results" component={ViewLabResults} />
                     </Layer>
                     <MenuPane history={this.props.history} />
                     <LoadingPane />

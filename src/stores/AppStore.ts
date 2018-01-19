@@ -1,5 +1,5 @@
 import {observable, computed} from 'mobx';
-import {labResultsStore} from './_GlobalStore';
+import {labResultsStore, patientsStore} from './_GlobalStore';
 
 
 export class AppStore {
@@ -15,6 +15,7 @@ export class AppStore {
 
     initializeApp() {
         labResultsStore.init();
+        patientsStore.init();
     }
 
     toggleNightmode(){

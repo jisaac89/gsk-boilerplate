@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import {Toolbar, Button, Layer} from '../../../recoil/src/index';
+import {Toolbar, Button, Layer, SlideIn} from '../../../recoil/src/index';
 
 import {observer} from 'mobx-react';
 
@@ -19,16 +19,15 @@ export default class Header extends React.Component<any, any> {
 
     render() {
         return (
-            <Layer>
-                <Toolbar flex block textCenter flush className="p10">
-                    <Button materialIcon  block icon={"mood"} onClick={this.toggleNightmode.bind(this)}>
-                        Toggle nightmode
-                    </Button>      
-                    <Button materialIcon  block icon={"menu"} onClick={this.toggleMenu.bind(this)}>
-                        Menu
-                    </Button>   
-                </Toolbar>
-            </Layer>
+            <SlideIn className="z4" if={!appStore.menu} from="top">
+                <Layer>
+                    <Toolbar flex block textCenter flush className="p10">   
+                        <Button materialIcon  block icon={"menu"} onClick={this.toggleMenu.bind(this)}>
+                            Dashboard
+                        </Button>   
+                    </Toolbar>
+                </Layer>
+            </SlideIn>
             )
         } 
 } 
