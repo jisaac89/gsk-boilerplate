@@ -36,6 +36,7 @@ export default abstract class BaseStore extends Store{
     }
 
     abstract addObject() : void;
+    abstract afterAdd() : void;
 
     async add() : Promise<any> {
         const context = this;
@@ -59,6 +60,7 @@ export default abstract class BaseStore extends Store{
         }).then(function(data) {
             console.log(data);
             context.loadNewPage();
+            context.afterAdd();
         });
     };
 

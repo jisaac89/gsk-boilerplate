@@ -4,7 +4,7 @@ export interface IViralLoad{
     labTestUUID ?: string;
     version ?: number;
     description ?: string;
-    creatorReference ?: number;
+    creatorReference ?: string;
     owner ?: string
-    labTest ?: ILabTest;
+    labtest ?: ILabTest;
 }

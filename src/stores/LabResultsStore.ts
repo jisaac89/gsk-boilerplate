@@ -15,7 +15,7 @@ export class LabResultsStore extends BaseStore {
   @observable selectedDescription : string = ''
 
   constructor(){
-    super('lab-results')
+    super('viralLoadTest')
   }
 
   gotoSlideIndex(n: number){
@@ -32,11 +32,13 @@ export class LabResultsStore extends BaseStore {
       labTestUUID : '`' + randomId + '`',
       version : 2,
       description : context.selectedDescription,
-      creatorReference : 1,
-      owner : context.selectedPatient['firstName'],
-      labTest : {
-       description: '',
-       result : '' 
+      creatorReference : '1',
+      owner : context.selectedPatient,
+      labtest : {
+       description: context.selectedDescription,
+       result : 'asfasfsfa' ,
+       "$class" : 'cloud.aperio.viiv.labTest',
+       id :'`' + randomId + '`'
       }
     }
   }
@@ -46,7 +48,7 @@ export class LabResultsStore extends BaseStore {
   }
 
   selectDescription(value) {
-    this.selectedPatient = value;
+    this.selectedDescription = value;
   }
 
   submitPrescription(){
@@ -55,6 +57,12 @@ export class LabResultsStore extends BaseStore {
 
   afterAdd(){
     this.slideIndex = 2;
+  }
+
+  resetState(){
+    this.slideIndex = 0;
+    this.selectedPatient = '';
+    this.selectedDescription = '';
   }
 }
 

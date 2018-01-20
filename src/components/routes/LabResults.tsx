@@ -27,6 +27,10 @@ export default class Message extends React.Component<any, any> {
         labResultsStore.submitPrescription();
     }
 
+    selectDescription(value) {
+        labResultsStore.selectDescription(value);
+    }
+
     render() {
         return (
             <SlideIn fill className="z3" if={!appStore.menu} from="top">
@@ -64,14 +68,14 @@ export default class Message extends React.Component<any, any> {
 
                                         <Toolbar block vertical spacing className="mt10">
                                             <Dropdown  searchTitle={"Search by patient name."} searchableKeys={['firstName']} block columns={[{name:'firstName', title: 'Patient name'}]} title={labResultsStore.selectedPatient ? labResultsStore.selectedPatient : "Select Patient"} rowIsSelectable="single" onChange={this.selectPatient.bind(this)} mobile dataSource={patientsStore.list} />
-                                            <Input block placeholder="Prescription Information" />
+                                            <Input focusOnMount={!!labResultsStore.selectedPatient} advanced error={labResultsStore.selectedDescription === ''} onChange={this.selectDescription.bind(this)} block placeholder="Prescription Information" />
                                             <Input block placeholder="Item Master Information" />
                                             <Input block placeholder="Testing ID" />
                                         </Toolbar>
 
                                         <Toolbar size="large" block flex textCenter spacing className="mt20">
                                             <Button block onClick={this.gotoSlideIndex.bind(this, 0)} icon="chevron-left">Cancel</Button>
-                                            <Button block onClick={this.submitPrescription.bind(this)} icon="chevron-right" theme="primary">Submit</Button>
+                                            <Button advanced loading={labResultsStore.loading} disabled={labResultsStore.selectedDescription === ''} block onClick={this.submitPrescription.bind(this)} icon="chevron-right" theme="primary">Submit</Button>
                                         </Toolbar>
                                     </Layer>
 

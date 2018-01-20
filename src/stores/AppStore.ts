@@ -24,6 +24,7 @@ export class AppStore {
 
     toggleMenu(){
         this.menu = !this.menu;
+        labResultsStore.resetState();
     }
 
 }
