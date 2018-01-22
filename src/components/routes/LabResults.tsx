@@ -1,7 +1,7 @@
 
 import * as React from 'react';
 
-import { Recoil, Table, Button, Wizard, Toolbar, Input,Dropdown, Emerge, Layer, SlideIn, Loading, Open, Checkbox } from '../../../recoil/src/index';
+import { Recoil, Table, Button, Wizard, Toolbar, Input,Dropdown, DatePicker, Emerge, Layer, SlideIn, Loading, Open, Checkbox } from '../../../recoil/src/index';
 
 import { observer } from 'mobx-react';
 
@@ -31,7 +31,19 @@ export default class Message extends React.Component<any, any> {
         labResultsStore.selectDescription(value);
     }
 
+    selectStartDate(date){
+        labResultsStore.selectStartDate(date);
+        labResultsStore.toggleStartDateDropdown();
+    }
+
+    toggleStartDateDropdown(){
+        labResultsStore.toggleStartDateDropdown();
+    }
+
     render() {
+
+        let {selectStartDateOpen, selectedStartDate} = labResultsStore
+
         return (
             <SlideIn fill className="z3" if={!appStore.menu} from="top">
                 <Layer fill flex>
@@ -69,8 +81,8 @@ export default class Message extends React.Component<any, any> {
                                         <Toolbar block vertical spacing className="mt10">
                                             <Dropdown  searchTitle={"Search by patient name."} searchableKeys={['firstName']} block columns={[{name:'firstName', title: 'Patient name'}]} title={labResultsStore.selectedPatient ? labResultsStore.selectedPatient : "Select Patient"} rowIsSelectable="single" onChange={this.selectPatient.bind(this)} mobile dataSource={patientsStore.list} />
                                             <Input focusOnMount={!!labResultsStore.selectedPatient} advanced error={labResultsStore.selectedDescription === ''} onChange={this.selectDescription.bind(this)} block placeholder="Prescription Information" />
-                                            <Input block placeholder="Item Master Information" />
-                                            <Input block placeholder="Testing ID" />
+                                            <DatePicker onClick={this.toggleStartDateDropdown.bind(this)} open={selectStartDateOpen} block mobile onSelect={this.selectStartDate.bind(this)} className="mb10" title={selectedStartDate ?  selectedStartDate.toDateString() : 'Start Date'} />
+                                            <Input block placeholder="HIV copies/mL of blood." />
                                         </Toolbar>
 
                                         <Toolbar size="large" block flex textCenter spacing className="mt20">
@@ -85,7 +97,7 @@ export default class Message extends React.Component<any, any> {
                                 <Emerge enter="fadeIn">
                                     <Layer className="w400px text-center center-width p10">
                                         <i className="material-icons super-xl mb20">check</i>
-                                        <h2 className="mb20">Confirm form submission.</h2>
+                                        <h2 className="mb20">Lab results submitted.</h2>
                                     </Layer>
                                 </Emerge>
                             </Layer>

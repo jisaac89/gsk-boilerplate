@@ -13,6 +13,8 @@ export class LabResultsStore extends BaseStore {
 
   @observable selectedPatient : string = '';
   @observable selectedDescription : string = ''
+  @observable selectedStartDate : Date = new Date();
+  @observable selectStartDateOpen : boolean = false;
 
   constructor(){
     super('viralLoadTest')
@@ -63,6 +65,14 @@ export class LabResultsStore extends BaseStore {
     this.slideIndex = 0;
     this.selectedPatient = '';
     this.selectedDescription = '';
+  }
+
+  selectStartDate(date) {
+    this.selectedStartDate = date;
+  }
+
+  toggleStartDateDropdown(){
+    this.selectStartDateOpen = !this.selectStartDateOpen;
   }
 }
 
