@@ -31,6 +31,7 @@ export class LabResultsStore extends BaseStore {
     let randomId = Math.random().toString();
 
     return<IViralLoad> {
+      "$class": "cloud.aperio.viiv.viralLoadTest",
       labTestUUID : '`' + randomId + '`',
       version : 2,
       description : context.selectedDescription,
@@ -39,7 +40,7 @@ export class LabResultsStore extends BaseStore {
       labtest : {
        description: context.selectedDescription,
        result : 'asfasfsfa' ,
-       "$class" : 'cloud.aperio.viiv.labTest',
+       "$class" : 'cloud.aperio.viiv.Labtest',
        id :'`' + randomId + '`'
       }
     }
